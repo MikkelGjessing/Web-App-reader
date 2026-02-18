@@ -2,18 +2,21 @@
 
 ## What Was Built
 
-A complete browser extension that allows users to manage and quickly access web applications via URLs, similar to Spark's URL-based web apps feature.
+A complete browser extension that runs and hosts web applications as an overlay within the browser. Users can access their saved web apps in a draggable, resizable overlay window without leaving their current page.
 
 ## Key Features
 
-1. **URL Input & Validation**
-   - User-friendly popup interface for entering web app URLs
-   - URL validation to ensure valid http/https URLs
-   - Enter key support for quick submission
+1. **Overlay Hosting**
+   - Web apps run in an iframe-based overlay within the current page
+   - Draggable overlay with click-and-drag functionality
+   - Resizable overlay with corner handle
+   - Minimize, maximize, and close controls
+   - Overlay persists across page navigation
 
-2. **App Management**
+2. **URL Management**
+   - User-friendly options page for managing web app URLs
+   - URL validation to ensure valid http/https URLs
    - Save up to 10 web apps with automatic limit management
-   - One-click access to saved apps (opens in new tab)
    - Individual delete for each saved app
    - Clear all saved apps option
 
@@ -22,6 +25,7 @@ A complete browser extension that allows users to manage and quickly access web 
    - Responsive button interactions with hover effects
    - Clean, professional layout
    - Empty state messaging
+   - Smooth animations and transitions
 
 4. **Browser Compatibility**
    - Chrome, Edge, Brave (Manifest V3)
@@ -32,16 +36,20 @@ A complete browser extension that allows users to manage and quickly access web 
 
 ### Files Created
 
-1. **manifest.json** - Extension configuration (Manifest V3)
+1. **manifest.json** - Extension configuration (Manifest V3) with content script support
 2. **popup.html** - Main UI structure
 3. **popup.css** - Styling with modern gradients and animations
-4. **popup.js** - Logic for URL handling, storage, and app management
-5. **icons/** - Extension icons (16x16, 48x48, 128x128)
-6. **test-app.html** - Test web app for manual testing
-7. **extension-preview.png** - UI preview image
-8. **.gitignore** - Git ignore configuration
-9. **README.md** - Comprehensive documentation
-10. **INSTALLATION_GUIDE.md** - Quick start guide
+4. **popup.js** - Logic for communicating with content script
+5. **content.js** - Content script for injecting and managing overlay
+6. **overlay.css** - Overlay styling with draggable/resizable features
+7. **options.html** - Options page UI
+8. **options.js** - Options page logic for URL management
+9. **icons/** - Extension icons (16x16, 48x48, 128x128)
+10. **test-app.html** - Test web app for manual testing
+11. **extension-preview.png** - UI preview image
+12. **.gitignore** - Git ignore configuration
+13. **README.md** - Comprehensive documentation
+14. **INSTALLATION_GUIDE.md** - Quick start guide
 
 ### Code Quality
 
@@ -57,6 +65,15 @@ A complete browser extension that allows users to manage and quickly access web 
 - Stores array of URLs under 'savedApps' key
 - Automatic limit of 10 apps (keeps most recent)
 - Data syncs across user's signed-in browsers
+
+### Overlay Implementation
+
+- Content script injected into all pages
+- Iframe-based isolated web app hosting
+- CSS-based styling with z-index priority
+- JavaScript-based drag and resize functionality
+- Message passing between popup and content script
+- Graceful fallback for content script injection
 
 ## Installation
 
@@ -85,6 +102,9 @@ A complete browser extension that allows users to manage and quickly access web 
 - Keyboard shortcuts
 - Dark mode support
 - Pin favorite apps
+- Multiple overlay instances
+- Overlay position memory
+- Custom overlay sizes/presets
 
 ## Security & Privacy
 

@@ -17,18 +17,22 @@
    - Select the folder containing the extension files
 
 3. **Start Using**
+   - Navigate to any webpage
    - Click the extension icon in your toolbar
-   - Enter a web app URL
-   - Click "Open App" to save and launch
+   - Click on any saved app URL to open it in an overlay
+   - Use the overlay controls to drag, resize, minimize, or close
 
 ## Testing the Extension
 
 Use the included `test-app.html` file:
-1. Open `test-app.html` in your browser
-2. Copy the URL from the address bar
-3. Click the Web App Reader extension icon
-4. Paste the URL and click "Open App"
-5. The app should now be in your saved list!
+1. Load the extension in your browser (follow steps above)
+2. Navigate to any webpage (e.g., https://www.google.com)
+3. Right-click the extension icon and select "Options"
+4. Enter a web app URL (e.g., https://www.example.com)
+5. Click "Save App"
+6. Go back to your webpage and click the extension icon
+7. Click on the saved app to see it open in an overlay
+8. Try dragging, resizing, minimizing, and maximizing the overlay!
 
 ## Recommended Web Apps to Try
 
