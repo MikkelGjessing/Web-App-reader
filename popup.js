@@ -1,5 +1,7 @@
 // Storage key for saved apps
 const STORAGE_KEY = 'savedApps';
+// Delay for content script injection
+const CONTENT_SCRIPT_INJECTION_DELAY = 100;
 
 // DOM Elements
 const appsList = document.getElementById('appsList');
@@ -64,7 +66,7 @@ function openApp(url) {
                                     action: 'openAppInOverlay',
                                     url: url
                                 });
-                            }, 100);
+                            }, CONTENT_SCRIPT_INJECTION_DELAY);
                         });
                     });
                 }

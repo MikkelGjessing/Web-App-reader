@@ -77,8 +77,8 @@ function openAppInOverlay(url) {
     const iframe = document.createElement('iframe');
     iframe.className = 'stepper-overlay-iframe';
     iframe.src = url;
-    iframe.allow = 'camera; microphone; geolocation; payment; autoplay; clipboard-read; clipboard-write';
-    iframe.sandbox = 'allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-downloads allow-top-navigation-by-user-activation';
+    iframe.allow = 'autoplay';
+    iframe.sandbox = 'allow-scripts allow-forms allow-popups allow-modals allow-downloads allow-top-navigation-by-user-activation';
     
     // Assemble overlay
     overlayContainer.appendChild(header);
@@ -130,10 +130,8 @@ function toggleMaximize() {
 // Function to make overlay draggable
 function makeDraggable(overlay, handle) {
     let isDragging = false;
-    let currentX;
-    let currentY;
-    let initialX;
-    let initialY;
+    let offsetX;
+    let offsetY;
     
     handle.addEventListener('mousedown', dragStart);
     document.addEventListener('mousemove', drag);
@@ -150,8 +148,14 @@ function makeDraggable(overlay, handle) {
             return;
         }
         
-        initialX = e.clientX - overlay.offsetLeft;
-        initialY = e.clientY - overlay.offsetTop;
+        // Remove centering transform and get current position
+        const rect = overlay.getBoundingClientRect();
+        overlay.style.transform = 'none';
+        overlay.style.left = rect.left + 'px';
+        overlay.style.top = rect.top + 'px';
+        
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
         isDragging = true;
         handle.style.cursor = 'grabbing';
     }
@@ -159,18 +163,18 @@ function makeDraggable(overlay, handle) {
     function drag(e) {
         if (isDragging) {
             e.preventDefault();
-            currentX = e.clientX - initialX;
-            currentY = e.clientY - initialY;
+            let newX = e.clientX - offsetX;
+            let newY = e.clientY - offsetY;
             
             // Keep within viewport bounds
             const maxX = window.innerWidth - overlay.offsetWidth;
             const maxY = window.innerHeight - overlay.offsetHeight;
             
-            currentX = Math.max(0, Math.min(currentX, maxX));
-            currentY = Math.max(0, Math.min(currentY, maxY));
+            newX = Math.max(0, Math.min(newX, maxX));
+            newY = Math.max(0, Math.min(newY, maxY));
             
-            overlay.style.left = currentX + 'px';
-            overlay.style.top = currentY + 'px';
+            overlay.style.left = newX + 'px';
+            overlay.style.top = newY + 'px';
         }
     }
     
