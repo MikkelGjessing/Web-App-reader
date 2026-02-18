@@ -1,16 +1,14 @@
 # Web App Reader
 
-A browser extension that allows you to contain and access web apps via URL, similar to Spark's URL-based web apps. Save your favorite web apps and open them quickly from the extension popup.
+A browser extension that allows you to view and access your saved web apps. Simply click the extension icon to see and open your saved web apps.
 
 ![Extension Preview](extension-preview.png)
 
 ## Features
 
-- 📱 Open web apps by entering their URL
-- 💾 Save frequently used web apps for quick access
+- 📱 View and access saved web apps
 - 🎨 Beautiful, modern user interface
 - 🔒 Secure storage using browser's sync storage
-- 🗑️ Easy management of saved apps (delete individual or clear all)
 - ⚡ Quick access from browser toolbar
 
 ## Installation
@@ -39,20 +37,11 @@ For permanent installation in Firefox, the extension needs to be signed by Mozil
 
 ## Usage
 
-1. **Opening a Web App:**
+1. **Viewing Saved Apps:**
    - Click the Web App Reader icon in your browser toolbar
-   - Enter the URL of the web app you want to open (e.g., `https://app.example.com`)
-   - Click "Open App" or press Enter
-   - The app will open in a new tab and be saved to your list
-
-2. **Accessing Saved Apps:**
-   - Click the Web App Reader icon
-   - Your saved apps will appear in the "Saved Apps" section
+   - Your saved apps will appear in the list
    - Click on any saved app URL to open it in a new tab
-
-3. **Managing Saved Apps:**
-   - To delete a specific app, click the "Delete" button next to it
-   - To clear all saved apps, click "Clear All Saved Apps" at the bottom
+   - If no apps are saved, you'll see a "No web app loaded" message
 
 ## File Structure
 
@@ -62,6 +51,8 @@ Web-App-reader/
 ├── popup.html          # Extension popup interface
 ├── popup.js            # Extension popup logic
 ├── popup.css           # Extension popup styling
+├── options.html        # Options page (legacy, not used)
+├── options.js          # Options page logic (legacy, not used)
 ├── icons/              # Extension icons
 │   ├── icon16.png
 │   ├── icon48.png

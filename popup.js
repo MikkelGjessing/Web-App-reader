@@ -2,17 +2,11 @@
 const STORAGE_KEY = 'savedApps';
 
 // DOM Elements
-const optionsBtn = document.getElementById('optionsBtn');
 const appsList = document.getElementById('appsList');
 
 // Load saved apps on popup open
 document.addEventListener('DOMContentLoaded', () => {
     loadSavedApps();
-});
-
-// Options button click handler
-optionsBtn.addEventListener('click', () => {
-    chrome.runtime.openOptionsPage();
 });
 
 // Function to load and display saved apps
