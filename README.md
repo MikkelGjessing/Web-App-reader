@@ -2,6 +2,8 @@
 
 A browser extension that allows you to contain and access web apps via URL, similar to Spark's URL-based web apps. Save your favorite web apps and open them quickly from the extension popup.
 
+![Extension Preview](extension-preview.png)
+
 ## Features
 
 - 📱 Open web apps by entering their URL

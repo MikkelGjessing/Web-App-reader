@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            margin: 0 0 20px 0;
+        }
+        .info {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Test Web App</h1>
+        <p>This is a sample web app that you can use to test the Web App Reader extension!</p>
+        
+        <div class="info">
+            <h3>Testing Instructions:</h3>
+            <ol>
+                <li>Open this file in your browser</li>
+                <li>Copy the URL from the address bar</li>
+                <li>Click the Web App Reader extension icon</li>
+                <li>Paste the URL into the extension</li>
+                <li>Click "Open App" to save and open it</li>
+                <li>The app should be saved in your "Saved Apps" list</li>
+            </ol>
+        </div>
+
+        <div class="info">
+            <h3>Alternative Test URLs:</h3>
+            <ul style="list-style-type: none; padding: 0;">
+                <li>📧 <code>https://mail.google.com</code></li>
+                <li>📝 <code>https://docs.google.com</code></li>
+                <li>📊 <code>https://sheets.google.com</code></li>
+                <li>💬 <code>https://web.whatsapp.com</code></li>
+                <li>🎵 <code>https://open.spotify.com</code></li>
+            </ul>
+        </div>
+
+        <p><strong>Current Time:</strong> <span id="time"></span></p>
+    </div>
+
+    <script>
+        // Update time every second to show it's a live web app
+        function updateTime() {
+            document.getElementById('time').textContent = new Date().toLocaleTimeString();
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
