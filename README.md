@@ -1,15 +1,18 @@
 # Web App Reader
 
-A browser extension that allows you to view and access your saved web apps. Simply click the extension icon to see and open your saved web apps.
+A browser extension that runs and hosts web apps as an overlay within the browser. Access your saved web apps directly in an overlay window without leaving your current page.
 
 ![Extension Preview](extension-preview.png)
 
 ## Features
 
-- 📱 View and access saved web apps
+- 📱 Run web apps in an overlay within the browser
 - 🎨 Beautiful, modern user interface
 - 🔒 Secure storage using browser's sync storage
 - ⚡ Quick access from browser toolbar
+- 🪟 Draggable, resizable overlay window
+- 📐 Minimize, maximize, and close controls
+- 🎯 Works on any webpage
 
 ## Installation
 
@@ -37,10 +40,23 @@ For permanent installation in Firefox, the extension needs to be signed by Mozil
 
 ## Usage
 
-1. **Viewing Saved Apps:**
+1. **Opening Web Apps:**
+   - Navigate to any webpage in your browser
    - Click the Web App Reader icon in your browser toolbar
    - Your saved apps will appear in the list
-   - Click on any saved app URL to open it in a new tab
+   - Click on any saved app URL to open it in an overlay
+   
+2. **Using the Overlay:**
+   - **Drag:** Click and drag the header to move the overlay
+   - **Resize:** Drag the bottom-right corner to resize
+   - **Minimize:** Click the minimize button (−) to collapse the overlay
+   - **Maximize:** Click the maximize button (□) to fullscreen
+   - **Close:** Click the close button (×) to hide the overlay
+   
+3. **Managing Apps:**
+   - Right-click the extension icon and select "Options" to manage your saved apps
+   - Add new web app URLs
+   - Delete apps you no longer need
    - If no apps are saved, you'll see a "No web app loaded" message
 
 ## File Structure
@@ -51,8 +67,10 @@ Web-App-reader/
 ├── popup.html          # Extension popup interface
 ├── popup.js            # Extension popup logic
 ├── popup.css           # Extension popup styling
-├── options.html        # Options page (not currently used)
-├── options.js          # Options page logic (not currently used)
+├── content.js          # Content script for overlay injection
+├── overlay.css         # Overlay styling
+├── options.html        # Options page for managing apps
+├── options.js          # Options page logic
 ├── icons/              # Extension icons
 │   ├── icon16.png
 │   ├── icon48.png
@@ -65,8 +83,12 @@ Web-App-reader/
 - **Manifest Version:** 3 (latest Chrome extension standard)
 - **Permissions:** 
   - `storage` - To save your web app URLs
-  - `tabs` - To open web apps in new tabs
+  - `tabs` - To interact with browser tabs
+  - `activeTab` - To inject overlay into active tab
+  - `scripting` - To inject content scripts
+  - `<all_urls>` - To run overlay on any webpage
 - **Storage:** Uses Chrome's sync storage (limited to 10 most recent apps)
+- **Overlay:** Uses content scripts and iframe for isolated web app hosting
 - **Compatibility:** Works with Chrome, Edge, Brave, and other Chromium-based browsers
 
 ## Privacy

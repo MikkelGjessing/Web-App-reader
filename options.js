@@ -135,9 +135,40 @@ function deleteApp(index) {
     });
 }
 
-// Function to open an app in a new tab
+// Function to open an app in overlay
 function openApp(url) {
-    chrome.tabs.create({ url: url });
+    // Get the active tab
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (tabs[0]) {
+            // Send message to content script to open overlay
+            chrome.tabs.sendMessage(tabs[0].id, {
+                action: 'openAppInOverlay',
+                url: url
+            }, (response) => {
+                if (chrome.runtime.lastError) {
+                    // If content script not ready, inject it
+                    console.log('Content script not ready, injecting...');
+                    chrome.scripting.executeScript({
+                        target: { tabId: tabs[0].id },
+                        files: ['content.js']
+                    }, () => {
+                        chrome.scripting.insertCSS({
+                            target: { tabId: tabs[0].id },
+                            files: ['overlay.css']
+                        }, () => {
+                            // Try again after injection
+                            setTimeout(() => {
+                                chrome.tabs.sendMessage(tabs[0].id, {
+                                    action: 'openAppInOverlay',
+                                    url: url
+                                });
+                            }, 100);
+                        });
+                    });
+                }
+            });
+        }
+    });
 }
 
 // Function to show success message
