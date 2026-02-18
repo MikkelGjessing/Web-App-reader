@@ -51,8 +51,8 @@ Web-App-reader/
 ├── popup.html          # Extension popup interface
 ├── popup.js            # Extension popup logic
 ├── popup.css           # Extension popup styling
-├── options.html        # Options page (legacy, not used)
-├── options.js          # Options page logic (legacy, not used)
+├── options.html        # Options page (not currently used)
+├── options.js          # Options page logic (not currently used)
 ├── icons/              # Extension icons
 │   ├── icon16.png
 │   ├── icon48.png
